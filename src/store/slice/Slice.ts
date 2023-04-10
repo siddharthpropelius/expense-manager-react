@@ -1,5 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export interface RootState {
+    expense: {
+        Expenses: ExpenseProps[]
+        modalState: boolean
+        totalIncome: number
+        totalExpense: number
+    }
+}
+
+interface InitalStateProps {
+    Expenses: ExpenseProps[]
+    modalState: boolean
+    totalIncome: number
+    totalExpense: number
+}
+
 interface ExpenseProps {
     id: number
     name: string
@@ -9,9 +25,8 @@ interface ExpenseProps {
     type: string
 }
 
-const Expenses: ExpenseProps[] = []
-const InitalState = {
-    Expenses: Expenses,
+const InitalState: InitalStateProps = {
+    Expenses: [],
     modalState: false,
     totalIncome: 0,
     totalExpense: 0

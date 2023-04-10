@@ -2,7 +2,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import NorthWestIcon from '@mui/icons-material/NorthWest';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useDispatch, useSelector } from 'react-redux';
-import { ExpenseActions } from '../../store/slice/Slice';
+import { ExpenseActions, RootState } from '../../store/slice/Slice';
 import { useEffect } from 'react';
 
 const data = [{
@@ -80,8 +80,8 @@ const data = [{
 
 const ChartCard = () => {
     const NumberFormat = new Intl.NumberFormat()
-    const totalIncome = useSelector((state: any) => state.expense.totalIncome)
-    const totalExpense = useSelector((state: any) => state.expense.totalExpense)
+    const totalIncome = useSelector((state: RootState) => state.expense.totalIncome)
+    const totalExpense = useSelector((state: RootState) => state.expense.totalExpense)
     let max = 100;
     const calculateHeight = (number: number) => Math.round((number / max) * 90);
     const dispatch = useDispatch()

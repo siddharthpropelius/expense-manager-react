@@ -1,15 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { ExpenseActions } from '../../store/slice/Slice';
+import { ExpenseActions, RootState } from '../../store/slice/Slice';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import { IncomeList, ExpenseList } from "../../store/data/list";
 
 
-interface CustomModalProps {
-    open: boolean
-    setOpen: (v: boolean) => void
-}
+
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -21,7 +18,7 @@ const style = {
     p: 4,
 };
 const CustomModal = () => {
-    const isOpen = useSelector((state: any) => state.expense.modalState) as boolean
+    const isOpen = useSelector((state: RootState) => state.expense.modalState) as boolean
     const [category, setCategory] = React.useState()
     const [type, setType] = React.useState('expense');
     const [price, setPrice] = React.useState<string>()

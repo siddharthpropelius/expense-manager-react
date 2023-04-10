@@ -4,11 +4,12 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../store/slice/Slice';
 
 
 export const RecentTransaction = () => {
     const [selectCurrency, setSelectedCurrency] = useState('ruppe')
-    const ExpenseData = useSelector((state: any) => state.expense.Expenses)
+    const ExpenseData = useSelector((state: RootState) => state.expense.Expenses)
     const navigate = useNavigate();
 
     const handleOnChangeCurrency = (e: any) => {

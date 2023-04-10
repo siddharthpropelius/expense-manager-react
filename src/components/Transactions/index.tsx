@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import CustomModal from "../layout/Modal"
 import { ExpenseActions } from "../../store/slice/Slice"
 import { BsPlusCircleFill } from 'react-icons/bs'
@@ -10,9 +10,6 @@ import CustomToggle from "../layout/Toggle"
 const Transactions = (): JSX.Element => {
     const dispatch = useDispatch()
     const [selectCurrency, setSelectedCurrency] = useState('ruppe')
-    // const ExpenseData = useSelector((state: any) => state.expense.Expenses)
-    // const total = Math.ceil(ExpenseData.length / 10)
-    // const [_data, setData] = useState(ExpenseData.slice(0, 10))
 
     const handleOnChangeCurrency = (e: any) => {
         setSelectedCurrency(e.target.value)

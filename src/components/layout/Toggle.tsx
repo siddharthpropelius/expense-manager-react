@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CustomPagination from "../layout/Pagination"
+import { RootState } from '../../store/slice/Slice';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -46,7 +47,7 @@ export default function CustomToggle({ currency }: { currency: string }) {
     const [value, setValue] = React.useState(0);
 
     const [type, setType] = React.useState('expense')
-    const ExpenseData = useSelector((state: any) => state.expense.Expenses)
+    const ExpenseData = useSelector((state: RootState) => state.expense.Expenses)
     const FilterData = ExpenseData.filter((i: any) => i.type === type)
     const total = Math.ceil(FilterData.length / 10)
     const [data, setData] = React.useState(FilterData.reverse().slice(0, 10))
