@@ -8,6 +8,8 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CustomPagination from "../layout/Pagination"
 import { RootState } from '../../store/slice/Slice';
+import SaveToPDF from '../../utils/SaveToPDF';
+import { Container } from '@mui/material';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -79,35 +81,41 @@ export default function CustomToggle({ currency }: { currency: string }) {
 
 
     return (
-        <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 4, mx: 4 }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ width: '100%' }}>
-                    <Tab label="Expense" {...a11yProps(0)} style={{ minWidth: "50%", maxWidth: 'fit-content' }} />
-                    <Tab label="Income" {...a11yProps(1)} style={{ minWidth: "50%", maxWidth: 'fit-content' }} />
-                </Tabs>
-            </Box>
-            <TabPanel value={value} index={value}  >
-                {data.length ? data.reverse().map((item: any) => {
-                    return (
-                        <div className="flex justify-between mt-5 mx-4">
-                            <div className="border-l-4 border-indigo-500 pl-2">
-                                <p className="text-[12px] text-gray-500  font-semibold">{item.date}</p>
-                                <p className="text-[12px] text-gray-500 underline font-semibold">{item.category.toUpperCase()}</p>
-                                <p>{item.name}</p>
-                            </div>
-                            <div className="items-center, px-4">
-                                {currency === 'ruppe' ? <CurrencyRupeeIcon sx={{ fontSize: '16px', verticalAlign: 'text-bottom' }} /> : <AttachMoneyIcon sx={{ fontSize: '16px', verticalAlign: 'text-bottom' }} />}{handleCurrency(item.price)}
-                            </div>
-                        </div>
-                    )
-                }) : <div className="flex justify-center h-[100px] items-center font-semibold">No Transaction Found!</div>}
-            </TabPanel>
-            <div>
-                {data.length &&
-                    <CustomPagination total={total} handleOnChange={HandleOnChangePagination} type={type} />
-                } </div>
+        <Container>
+            <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 4, mx: 4 }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ width: '100%' }}>
+                        <Tab label="Expense" {...a11yProps(0)} style={{ minWidth: "50%", maxWidth: 'fit-content' }} />
+                        <Tab label="Income" {...a11yProps(1)} style={{ minWidth: "50%", maxWidth: 'fit-content' }} />
+                    </Tabs>
+                </Box>
+                <button onClick={SaveToPDF}>GENERATE</button>
+                <TabPanel value={value} index={value} >
+                    <div id="pdf-content">
+                        {data.length ? data.reverse().map((item: any) => {
+                            return (
+                                <div className="flex justify-between mt-5 mx-4">
+                                    <div className="border-l-4 border-indigo-500 pl-2">
+                                        <p className="text-[12px] text-gray-500  font-semibold">{item.date}</p>
+                                        <p className="text-[12px] text-gray-500 underline font-semibold">{item.category.toUpperCase()}</p>
+                                        <p>{item.name}</p>
+                                    </div>
+                                    <div className="items-center, px-4">
+                                        {currency === 'ruppe' ? <CurrencyRupeeIcon sx={{ fontSize: '16px', verticalAlign: 'text-bottom' }} /> : <AttachMoneyIcon sx={{ fontSize: '16px', verticalAlign: 'text-bottom' }} />}{handleCurrency(item.price)}
+                                    </div>
+                                </div>
+                            )
+                        }) : <div className="flex justify-center h-[100px] items-center font-semibold">No Transaction Found!</div>}
+                    </div>
+
+                </TabPanel>
+                <div>
+                    {data.length &&
+                        <CustomPagination total={total} handleOnChange={HandleOnChangePagination} type={type} />
+                    } </div>
 
 
-        </Box>
+            </Box >
+        </Container>
     );
 }
