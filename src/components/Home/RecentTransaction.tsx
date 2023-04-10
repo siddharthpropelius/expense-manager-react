@@ -1,5 +1,5 @@
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import { MenuItem, Select } from '@mui/material';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ export const RecentTransaction = () => {
     const ExpenseData = useSelector((state: RootState) => state.expense.Expenses)
     const navigate = useNavigate();
 
-    const handleOnChangeCurrency = (e: any) => {
+    const handleOnChangeCurrency = (e: SelectChangeEvent<string>) => {
         setSelectedCurrency(e.target.value)
     }
 

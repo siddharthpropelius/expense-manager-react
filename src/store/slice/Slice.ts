@@ -45,17 +45,13 @@ const ExpenseSlice = createSlice({
         totalIncome(state) {
             const data = state.Expenses.filter((i) => i.type === 'income')
             let total = 0
-            data.map((i) => {
-                total += Number(i.price)
-            })
+            data.map((i) => total += Number(i.price))
             state.totalIncome = total || 0
         },
         totalExpense(state) {
             const data = state.Expenses.filter((i) => i.type === 'expense')
             let total = 0
-            data.map((i) => {
-                total += Number(i.price)
-            })
+            data.map((i) => total += Number(i.price))
             state.totalExpense = total || 0
         }
     }

@@ -1,7 +1,7 @@
 import { AiFillGithub } from 'react-icons/ai'
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import { MenuItem, Select } from '@mui/material';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs'
 
@@ -38,7 +38,7 @@ const Data = [{
 }]
 const UpcommingTransactiom = () => {
     const [selectCurrency, setSelectedCurrency] = useState('ruppe')
-    const handleOnChangeCurrency = (e: any) => {
+    const handleOnChangeCurrency = (e: SelectChangeEvent<string>) => {
         setSelectedCurrency(e.target.value)
     }
 
@@ -46,10 +46,8 @@ const UpcommingTransactiom = () => {
         switch (selectCurrency) {
             case 'ruppee':
                 return value
-                break;
             case 'dollar':
                 return value / 80
-                break;
             default:
                 return value
         }

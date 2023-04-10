@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { AiOutlineMenu } from "react-icons/ai";
 // import LOGO from "../assets/logo.png";
 
 const Navbar = () => {
@@ -22,26 +21,26 @@ const Navbar = () => {
               : "ease-in-out duration-500 fixed left-[-100%]"
           }
         >
-            <h1 className="p-4">EXPENSE MANAGER</h1>
+          <h1 className="p-4">EXPENSE MANAGER</h1>
           <li className="p-4 cursor-pointer ">
-            
-              Home
-           
+
+            Home
+
           </li>
           <li className="p-4 cursor-pointer ">
-           
-              WebAR
-           
+
+            WebAR
+
           </li>
           <li className="p-4 cursor-pointer ">
-          
-              Services
-            
+
+            Services
+
           </li>
           <li className="p-4 cursor-pointer ">
-          
-              About
-            
+
+            About
+
           </li>
         </ul>
       </div>

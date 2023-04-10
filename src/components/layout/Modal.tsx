@@ -35,6 +35,7 @@ const CustomModal = () => {
     const handleDateChange = (date: string) => {
         setSelectedDate(date);
     };
+    console.log(type)
     return (
         <div>
             <Modal
@@ -48,7 +49,7 @@ const CustomModal = () => {
                         color="primary"
                         value={type}
                         exclusive
-                        onChange={(e: any) => setType(e.target.value)}
+                        onChange={(event: any) => setType(event.target.value)}
                         aria-label="Platform"
                     >
                         <ToggleButton value="expense">Expense</ToggleButton>

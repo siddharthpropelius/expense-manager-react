@@ -4,14 +4,14 @@ import { ExpenseActions } from "../../store/slice/Slice"
 import { BsPlusCircleFill } from 'react-icons/bs'
 import { useState } from "react"
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import { MenuItem, Select } from '@mui/material';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CustomToggle from "../layout/Toggle"
 const Transactions = (): JSX.Element => {
     const dispatch = useDispatch()
     const [selectCurrency, setSelectedCurrency] = useState('ruppe')
 
-    const handleOnChangeCurrency = (e: any) => {
+    const handleOnChangeCurrency = (e: SelectChangeEvent<string>) => {
         setSelectedCurrency(e.target.value)
     }
 
