@@ -10,6 +10,7 @@ import CustomPagination from "../layout/Pagination"
 import { RootState } from '../../store/slice/Slice';
 import SaveToPDF from '../../utils/SaveToPDF';
 import { Container } from '@mui/material';
+import { FiDownload } from 'react-icons/fi'
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -89,7 +90,10 @@ export default function CustomToggle({ currency }: { currency: string }) {
                         <Tab label="Income" {...a11yProps(1)} style={{ minWidth: "50%", maxWidth: 'fit-content' }} />
                     </Tabs>
                 </Box>
-                <button onClick={SaveToPDF}>GENERATE</button>
+                <div className='w-full flex justify-end cursor-pointer '>
+                    <FiDownload size={20} className='mr-12 mt-1' onClick={SaveToPDF} />
+                </div>
+                {/* <button onClick={SaveToPDF}>GENERATE</button> */}
                 <TabPanel value={value} index={value} >
                     <div id="pdf-content">
                         {data.length ? data.reverse().map((item: any) => {

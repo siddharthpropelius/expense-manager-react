@@ -5,10 +5,10 @@ const SaveToPDF = () => {
     doc.html(document.querySelector("#pdf-content") as HTMLElement, {
         callback: function (pdf) {
             const pageCount = doc.internal.pages.length;
+            doc.text('This is the first title.', 20, 20)
             doc.setFontSize(42)
             pdf.deletePage(pageCount)
-            pdf.save('record.pdf')
-            window.open(pdf.output('bloburl'));
+            doc.save("save.pdf")
         },
         x: 0,
         y: 0,
