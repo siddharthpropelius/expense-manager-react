@@ -31,7 +31,7 @@ export const RecentTransaction = () => {
             <div className="flex justify-between">
                 <h3 className="text-xl font-semibold">Recent Transactions</h3>
                 <div>
-                    <button className="bg-gray-200 text-gray-500 px-5 py-1 rounded-lg" onClick={() => navigate('/transactions')}>Show all</button>
+                    <button className="bg-gray-200 text-gray-500 px-5 py-1 rounded-lg hover:bg-black hover:text-white" onClick={() => navigate('/transactions')}>Show all</button>
                     <Select value={selectCurrency} onChange={handleOnChangeCurrency} sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 }, '.MuiOutlinedInput-notchedOutline-focused': { border: 0 } }}>
                         <MenuItem
                             value={"ruppe"}
